@@ -38,7 +38,14 @@ namespace WorkshopSushiCsharp
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            //MessageBox.Show("test");
+            Application.Exit();
+            base.OnFormClosing(e);
+            
         }
     }
 }
