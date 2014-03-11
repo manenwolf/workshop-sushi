@@ -56,5 +56,74 @@ namespace WorkshopSushiCsharp
             Form2 f2 = new Form2(textBox1.Text, "placeholder");
             f2.Show();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar5_Scroll(object sender, EventArgs e)
+        {
+            switch (trackBar5.Value)
+            {
+                case 0:
+                    label11.Text = "Doesn't matter";
+                    break;
+                case 1:
+                    label11.Text = "Christianity";
+                    break;
+                case 2:
+                    label11.Text = "Islam";
+                    break;
+                case 3:
+                    label11.Text = "Judaism";
+                    break;
+                case 4:
+                    label11.Text = "Buddhism";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar3_Scroll(object sender, EventArgs e)
+        {
+            label13.Text = trackBar3.Value + " C";
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            label7.Text = trackBar2.Value + " people/km^2";
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
