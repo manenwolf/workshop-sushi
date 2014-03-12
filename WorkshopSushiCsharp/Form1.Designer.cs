@@ -208,7 +208,6 @@
             // healthcare
             // 
             this.healthcare.Location = new System.Drawing.Point(207, 181);
-            this.healthcare.Maximum = 20;
             this.healthcare.Name = "healthcare";
             this.healthcare.Size = new System.Drawing.Size(104, 45);
             this.healthcare.TabIndex = 20;
@@ -280,4 +279,3 @@
         private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
-
