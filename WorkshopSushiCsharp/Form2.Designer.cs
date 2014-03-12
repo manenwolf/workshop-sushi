@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.jokeButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,11 +66,32 @@
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // jokeButton
+            // 
+            this.jokeButton.Location = new System.Drawing.Point(12, 379);
+            this.jokeButton.Name = "jokeButton";
+            this.jokeButton.Size = new System.Drawing.Size(241, 51);
+            this.jokeButton.TabIndex = 3;
+            this.jokeButton.Text = "Tell me a joke!";
+            this.jokeButton.UseVisualStyleBackColor = true;
+            this.jokeButton.Click += new System.EventHandler(this.jokeButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(259, 379);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(241, 51);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Pokedex-mode";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 442);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.jokeButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -85,5 +108,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button jokeButton;
+        private System.Windows.Forms.Button button2;
     }
 }
