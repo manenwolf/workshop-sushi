@@ -55,6 +55,11 @@ namespace WorkshopSushiCsharp
                     countries.Add(land);
                     land = "";
                 }
+                else if (lijst[i] == '\n')
+                {
+                    countries.Add(land);
+                    land = "";
+                }
                 else
                 {
 
@@ -69,6 +74,38 @@ namespace WorkshopSushiCsharp
 
         }
 
+        float getreligion(string data)
+        {
+            int numtilde = 0;
+            int pos = 0;
+            string number = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == '|')
+                {
+                    numtilde++;
+                    if (numtilde == 2)
+                    {
+                        pos = i;
+                        break;
+                    }
+                }
+            }
+            pos++;
+            while (true)
+            {
+                pos++;
+                if (data[pos] == '%')
+                {
+                    break;
+                }
+                number += data[pos];
+
+            }
+
+            return float.Parse(number);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             int eco = economy.Value;
@@ -76,14 +113,19 @@ namespace WorkshopSushiCsharp
             int pop = popdens.Value;
             int fait = Religion.Value;
 
-            int afwijking = 10;
+            int afwijking = 80;
             bool found = false;
 
 
 
-            // while (true)
+            while (true)
             {
                 List<string> countries = new List<string>();
+                List<string> countries2 = new List<string>();
+                List<string> countries3 = new List<string>();
+                List<string> countries4 = new List<string>();
+                List<string> countries5 = new List<string>();
+
                 //Calculate all the -things! http://api.wolframalpha.com/v2/query?input=female%20population%20Belgium&appid=99LE3A-EG946R2RTA for example
                 string baseUrl1 = "http://api.wolframalpha.com/v2/query?input=country+with+population+density+%3C+" + (pop + afwijking) + "+and+population+density+%3E+" + (pop - afwijking) + "&appid=99LE3A-EG946R2RTA";
                 XDocument xml = XDocument.Load(baseUrl1);
@@ -94,19 +136,118 @@ namespace WorkshopSushiCsharp
                            select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
 
                 label3.Text = lv1s.ToList<string>().ElementAt(0);
+
+                string aaa = lv1s.ToList<string>().ElementAt(0);
+
                 countries = getcountries(lv1s.ToList<string>().ElementAt(0));
                 string test5 = "";
                 for (int i = 0; i < countries.Count; i++)
                 {
                     test5 += countries[i];
                 }
+                label9.Text = test5;
+
+                float correction = (health / 20 - afwijking / 100);
+                if (correction < 0)
+                {
+                    correction = 0;
+                }
+                string baseUrl2 = "http://api.wolframalpha.com/v2/query?input=Country+with+UN+health+index+%3E+" + correction + "&appid=99LE3A-EG946R2RTA";
+                xml = XDocument.Load(baseUrl2);
+                lv1s = from lv1 in xml.Descendants("pod")
+                       where (lv1.Attribute("title").Value == "Result")
+                       select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
+
+                string lolz = (lv1s.ToList<string>().ElementAt(0));
+
+                countries2 = getcountries(lv1s.ToList<string>().ElementAt(0));
+                test5 = "";
+                for (int i = 0; i < countries2.Count; i++)
+                {
+                    test5 += countries2[i];
+                }
+                label10.Text = "dkmjlqidfjl" + test5;
+                //compare the lists
+                foreach (string c1 in countries)
+                {
+                    foreach (string c2 in countries2)
+                    {
+                        if (c1.Contains(c2) || c2.Contains(c1))
+                        {
+                            countries3.Add(c1);
+                        }
+                    }
+                }
+                string reli = "";
+                switch (Religion.Value)
+                {
+                    case 0:
+                        reli = "Doesn't matter";
+                        break;
+                    case 1:
+                        reli = "Christianity";
+                        break;
+                    case 2:
+                        reli = "Islam";
+                        break;
+                    case 3:
+                        reli = "Judaism";
+                        break;
+                    case 4:
+                        reli = "Buddhism";
+                        break;
+                    default:
+                        break;
+                }
+
+                if (reli != "Doesn't matter")
+                {
+                    for (int i = 0; i < countries3.Count; i++)
+                    {
+                        string baseUrl3 = "http://api.wolframalpha.com/v2/query?input=" + countries3[i] + "+" + reli + "&appid=99LE3A-EG946R2RTA";
+                        xml = XDocument.Load(baseUrl3);
+                        lv1s = from lv1 in xml.Descendants("pod")
+                               where (lv1.Attribute("title").Value == "Basic properties")
+                               select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
+
+                        float religieper = getreligion(lv1s.ToList<string>().ElementAt(0));
+                        label2.Text = "" + religieper;
+                        MessageBox.Show("" + countries3[i] + " " + religieper);
+                        if (religieper > 20)
+                        {
+                            countries4.Add(countries3[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    countries4 = countries3;
+                }
+
+
+                if (countries4.Count != 0)
+                {
+                    label2.Text = "kqkqkqk " + countries4.ElementAt(0) + countries4.Count;
+                    found = true;
+                }
+
+
+
+
+
                 label3.Text = test5;
                 // zomg, text is showin up
                 if (found == true)
                 {
-                    // break;
+
+                    break;
                 }
-                afwijking++;
+                countries = new List<string>();
+                countries2 = new List<string>();
+                countries3 = new List<string>();
+                countries4 = new List<string>();
+                countries5 = new List<string>();
+                afwijking += 80;
             }
 
             //  this.Hide();
