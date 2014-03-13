@@ -117,13 +117,13 @@ namespace WorkshopSushiCsharp
             bool found = false;
 
 
-
+            List<string> countries4 = new List<string>();
             while (true)
             {
                 List<string> countries = new List<string>();
                 List<string> countries2 = new List<string>();
                 List<string> countries3 = new List<string>();
-                List<string> countries4 = new List<string>();
+                 countries4 = new List<string>();
                 List<string> countries5 = new List<string>();
 
                 //Calculate all the -things! http://api.wolframalpha.com/v2/query?input=female%20population%20Belgium&appid=99LE3A-EG946R2RTA for example
@@ -134,12 +134,19 @@ namespace WorkshopSushiCsharp
                 var lv1s = from lv1 in xml.Descendants("pod")
                            where (lv1.Attribute("title").Value == "Result")
                            select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
+                if (lv1s.ToList<string>().Count == 0) {
+                    found = true;
+                    countries4 = new List<string>();
+                    countries4.Add("WINAKland");
+                }
+                else
+                {
+                    label3.Text = lv1s.ToList<string>().ElementAt(0);
+                    countries = getcountries(lv1s.ToList<string>().ElementAt(0));
+                }
+               
 
-                label3.Text = lv1s.ToList<string>().ElementAt(0);
-
-                string aaa = lv1s.ToList<string>().ElementAt(0);
-
-                countries = getcountries(lv1s.ToList<string>().ElementAt(0));
+               
                 string test5 = "";
                 for (int i = 0; i < countries.Count; i++)
                 {
@@ -158,9 +165,19 @@ namespace WorkshopSushiCsharp
                        where (lv1.Attribute("title").Value == "Result")
                        select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
 
-                string lolz = (lv1s.ToList<string>().ElementAt(0));
-
-                countries2 = getcountries(lv1s.ToList<string>().ElementAt(0));
+               // string lolz = (lv1s.ToList<string>().ElementAt(0));
+                if (lv1s.ToList<string>().Count == 0)
+                {
+                    found = true;
+                    countries4 = new List<string>();
+                    countries4.Add("WINAKland");
+                }
+                else
+                {
+                   
+                    countries2 = getcountries(lv1s.ToList<string>().ElementAt(0));
+                }
+               
                 test5 = "";
                 for (int i = 0; i < countries2.Count; i++)
                 {
@@ -209,10 +226,21 @@ namespace WorkshopSushiCsharp
                         lv1s = from lv1 in xml.Descendants("pod")
                                where (lv1.Attribute("title").Value == "Basic properties")
                                select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
-
-                        float religieper = getreligion(lv1s.ToList<string>().ElementAt(0));
+                        float religieper=0;
+                        if (lv1s.ToList<string>().Count == 0)
+                        {
+                            found = true;
+                            countries4 = new List<string>();
+                            countries4.Add("WINAKland");
+                        }
+                        else
+                        {
+                             religieper = getreligion(lv1s.ToList<string>().ElementAt(0));
+                        }
+               
+                        
                         label2.Text = "" + religieper;
-                        MessageBox.Show("" + countries3[i] + " " + religieper);
+                       // MessageBox.Show("" + countries3[i] + " " + religieper);
                         if (religieper > 20)
                         {
                             countries4.Add(countries3[i]);
@@ -250,8 +278,9 @@ namespace WorkshopSushiCsharp
                 afwijking += 80;
             }
 
-            //  this.Hide();
-            Form2 f2 = new Form2(textBox1.Text, "placeholder");
+            this.Hide();
+            Form2 f2 = new Form2(textBox1.Text, countries4[0]);
+            
             f2.Show();
 
 
