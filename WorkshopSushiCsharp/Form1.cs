@@ -274,6 +274,7 @@ namespace WorkshopSushiCsharp
                 countries2 = new List<string>();
                 countries3 = new List<string>();
                 countries4 = new List<string>();
+                countries4.Add("WINAKland");
                 countries5 = new List<string>();
                 afwijking += 80;
             }
