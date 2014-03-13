@@ -54,6 +54,11 @@ namespace WorkshopSushiCsharp
                     countries.Add(land);
                     land = "";
                 }
+                else if (lijst[i] == '\n')
+                {
+                    countries.Add(land);
+                    land = "";
+                }
                 else {
                     
                     
@@ -74,7 +79,7 @@ namespace WorkshopSushiCsharp
             int pop = popdens.Value;
             int fait = Religion.Value;
 
-            int afwijking = 100 ;
+            int afwijking = 20 ;
             bool found = false;
 
 
@@ -94,6 +99,9 @@ namespace WorkshopSushiCsharp
                            select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
 
                 label3.Text = lv1s.ToList<string>().ElementAt(0);
+
+                string aaa = lv1s.ToList<string>().ElementAt(0);
+
                 countries = getcountries(lv1s.ToList<string>().ElementAt(0));
                 string test5 = "";
                 for (int i = 0; i < countries.Count; i++) {
@@ -107,11 +115,13 @@ namespace WorkshopSushiCsharp
                            where (lv1.Attribute("title").Value == "Result")
                            select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
 
+               string lolz = (lv1s.ToList<string>().ElementAt(0));
+
                 countries2 = getcountries(lv1s.ToList<string>().ElementAt(0));
                 test5 = "";
                 for (int i = 0; i < countries2.Count; i++)
                 {
-                    test5 += countries[i];
+                    test5 += countries2[i];
                 }
                 label10.Text = "dkmjlqidfjl" + test5;
                 //compare the lists
@@ -126,7 +136,7 @@ namespace WorkshopSushiCsharp
                     }
                 }
 
-                //label1.Text = "kqkqkqk " + countries3.ElementAt(0);
+                label1.Text = "kqkqkqk " + countries3.ElementAt(0);
 
 
 
