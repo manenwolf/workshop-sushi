@@ -31,29 +31,25 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
+            this.economy = new System.Windows.Forms.TrackBar();
+            this.popdens = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.trackBar5 = new System.Windows.Forms.TrackBar();
+            this.Religion = new System.Windows.Forms.TrackBar();
             this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.trackBar4 = new System.Windows.Forms.TrackBar();
+            this.healthcare = new System.Windows.Forms.TrackBar();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.economy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popdens)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Religion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthcare)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -85,30 +81,22 @@
             this.label2.Text = "Where should I go live?";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // trackBar1
+            // economy
             // 
-            this.trackBar1.Location = new System.Drawing.Point(207, 139);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 3;
+            this.economy.Location = new System.Drawing.Point(207, 139);
+            this.economy.Maximum = 30;
+            this.economy.Name = "economy";
+            this.economy.Size = new System.Drawing.Size(104, 45);
+            this.economy.TabIndex = 3;
             // 
-            // trackBar2
+            // popdens
             // 
-            this.trackBar2.Location = new System.Drawing.Point(207, 232);
-            this.trackBar2.Maximum = 450;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(104, 45);
-            this.trackBar2.TabIndex = 4;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
-            // 
-            // trackBar3
-            // 
-            this.trackBar3.Location = new System.Drawing.Point(207, 283);
-            this.trackBar3.Maximum = 40;
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(104, 45);
-            this.trackBar3.TabIndex = 5;
-            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
+            this.popdens.Location = new System.Drawing.Point(207, 232);
+            this.popdens.Maximum = 450;
+            this.popdens.Name = "popdens";
+            this.popdens.Size = new System.Drawing.Size(104, 45);
+            this.popdens.TabIndex = 4;
+            this.popdens.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // label3
             // 
@@ -122,9 +110,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(190, 378);
+            this.button1.Location = new System.Drawing.Point(115, 334);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.Size = new System.Drawing.Size(285, 40);
             this.button1.TabIndex = 8;
             this.button1.Text = "Find my new home!";
             this.button1.UseVisualStyleBackColor = true;
@@ -170,52 +158,34 @@
             this.label7.Text = "(Higher is higher density)";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(138, 283);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Temperature";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(163, 334);
+            this.label10.Location = new System.Drawing.Point(167, 283);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.Size = new System.Drawing.Size(45, 13);
             this.label10.TabIndex = 16;
-            this.label10.Text = "Faith";
+            this.label10.Text = "Religion";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // trackBar5
+            // Religion
             // 
-            this.trackBar5.Location = new System.Drawing.Point(207, 334);
-            this.trackBar5.Maximum = 4;
-            this.trackBar5.Name = "trackBar5";
-            this.trackBar5.Size = new System.Drawing.Size(104, 45);
-            this.trackBar5.TabIndex = 15;
-            this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll);
+            this.Religion.Location = new System.Drawing.Point(211, 283);
+            this.Religion.Maximum = 4;
+            this.Religion.Name = "Religion";
+            this.Religion.Size = new System.Drawing.Size(104, 45);
+            this.Religion.TabIndex = 15;
+            this.Religion.Scroll += new System.EventHandler(this.trackBar5_Scroll);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(317, 334);
+            this.label11.Location = new System.Drawing.Point(321, 283);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 13);
             this.label11.TabIndex = 17;
             this.label11.Text = "Doesn\'t matter";
             this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(321, 283);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(23, 13);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "0 C";
             // 
             // label12
             // 
@@ -235,12 +205,13 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Healthcare";
             // 
-            // trackBar4
+            // healthcare
             // 
-            this.trackBar4.Location = new System.Drawing.Point(207, 181);
-            this.trackBar4.Name = "trackBar4";
-            this.trackBar4.Size = new System.Drawing.Size(104, 45);
-            this.trackBar4.TabIndex = 20;
+            this.healthcare.Location = new System.Drawing.Point(207, 181);
+            this.healthcare.Name = "healthcare";
+            this.healthcare.Size = new System.Drawing.Size(104, 45);
+            this.healthcare.TabIndex = 20;
+            this.healthcare.Scroll += new System.EventHandler(this.trackBar4_Scroll);
             // 
             // progressBar1
             // 
@@ -259,32 +230,28 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.trackBar4);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.healthcare);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.trackBar5);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Religion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.trackBar3);
-            this.Controls.Add(this.trackBar2);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.popdens);
+            this.Controls.Add(this.economy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "Emi-helper";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.economy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popdens)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Religion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthcare)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,23 +262,20 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar3;
+        private System.Windows.Forms.TrackBar economy;
+        private System.Windows.Forms.TrackBar popdens;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TrackBar trackBar5;
+        private System.Windows.Forms.TrackBar Religion;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TrackBar trackBar4;
+        private System.Windows.Forms.TrackBar healthcare;
         private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

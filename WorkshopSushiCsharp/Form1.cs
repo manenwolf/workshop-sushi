@@ -41,26 +41,75 @@ namespace WorkshopSushiCsharp
         {
 
         }
+        List<string> getcountries(string lijst)
+        {
+            List<string> countries = new List<string>();
+            string land ="";
+            for (int i = 0; i < lijst.Length; i++) {
+                if (lijst[i] == '|')
+                {
+                    land = land.Remove(land.Length - 1);
+                    
+                    
+                    countries.Add(land);
+                    land = "";
+                }
+                else {
+                    
+                    
+                       land += lijst[i];        
+                    
+                }
+
+            }
+            countries.Add(land);
+            return countries;
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int eco = economy.Value;
+            int health = healthcare.Value;
+            int pop = popdens.Value;
+            int fait = Religion.Value;
 
-            //Calculate all the things! http://api.wolframalpha.com/v2/query?input=female%20population%20Belgium&appid=99LE3A-EG946R2RTA for example
-            // http://api.wolframalpha.com/v2/query?input=Belgium&appid=99LE3A-EG946R2RTA
-            XDocument xml = XDocument.Load("http://api.wolframalpha.com/v2/query?input=Belgium&appid=99LE3A-EG946R2RTA");
-            XElement test = xml.Element("queryresult");
-            //var values = xml.Descendants("queryresult").Where(i => i.Element("pod").Value == "Input interpretation").Where(f => f.Element("subpod").Value == "");
-            var lv1s = from lv1 in xml.Descendants("pod")
-                       where (lv1.Attribute("title").Value == "Demographics")
-                       select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
+            int afwijking = 10 ;
+            bool found = false;
 
-            label3.Text = lv1s.ToList<string>().ElementAt(0);
-            // zomg, text is showin up
 
+
+           // while (true)
+            {
+                List<string> countries = new List<string>();
+                //Calculate all the -things! http://api.wolframalpha.com/v2/query?input=female%20population%20Belgium&appid=99LE3A-EG946R2RTA for example
+                string baseUrl1 = "http://api.wolframalpha.com/v2/query?input=country+with+population+density+%3C+" + (pop + afwijking) + "+and+population+density+%3E+" + (pop - afwijking) + "&appid=99LE3A-EG946R2RTA";
+                XDocument xml = XDocument.Load(baseUrl1);
+
+                XElement test = xml.Element("queryresult");
+                var lv1s = from lv1 in xml.Descendants("pod")
+                           where (lv1.Attribute("title").Value == "Result")
+                           select lv1.Descendants("subpod").Descendants("plaintext").ElementAt(0).Value;
+
+                label3.Text = lv1s.ToList<string>().ElementAt(0);
+                countries = getcountries(lv1s.ToList<string>().ElementAt(0));
+                string test5 = "";
+                for (int i = 0; i < countries.Count; i++) {
+                    test5 += countries[i]; 
+                }
+                label3.Text = test5;
+                // zomg, text is showin up
+                if (found == true) {
+                   // break;
+                }
+                afwijking++;
+            }
 
           //  this.Hide();
             Form2 f2 = new Form2(textBox1.Text, "placeholder");
             f2.Show();
+        
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -85,7 +134,7 @@ namespace WorkshopSushiCsharp
 
         private void trackBar5_Scroll(object sender, EventArgs e)
         {
-            switch (trackBar5.Value)
+            switch (Religion.Value)
             {
                 case 0:
                     label11.Text = "Doesn't matter";
@@ -112,11 +161,7 @@ namespace WorkshopSushiCsharp
 
         }
 
-        private void trackBar3_Scroll(object sender, EventArgs e)
-        {
-            label13.Text = trackBar3.Value + " C";
-        }
-
+        
         private void label7_Click(object sender, EventArgs e)
         {
 
@@ -124,10 +169,15 @@ namespace WorkshopSushiCsharp
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            label7.Text = trackBar2.Value + " people/km^2";
+            label7.Text = popdens.Value + " people/km^2";
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar4_Scroll(object sender, EventArgs e)
         {
 
         }
